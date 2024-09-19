@@ -1,0 +1,167 @@
+https://stepik.org/lesson/416759/step/1
+# Чтение входных данных
+input_str = input().strip()
+n = int(input().strip())
+
+# Формирование списка из строки
+elements = input_str.split()
+
+# Инициализация списка для подсписков
+result = [[] for _ in range(n)]
+
+# Разделение элементов на подсписки
+for i, element in enumerate(elements):
+    result[i % n].append(element)
+
+# Вывод результата
+print(result)
+https://stepik.org/lesson/416759/step/2
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Чтение элементов матрицы
+matrix = [list(map(int, input().strip().split())) for _ in range(n)]
+
+# Инициализация переменной для хранения максимального элемента
+max_element = float('-inf')
+
+# Поиск максимального элемента в заштрихованной области
+for i in range(n):
+    for j in range(n - i - 1, n):
+        if matrix[i][j] > max_element:
+            max_element = matrix[i][j]
+
+# Вывод максимального элемента
+print(max_element)
+https://stepik.org/lesson/416759/step/3
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Чтение элементов матрицы
+matrix = [list(map(int, input().strip().split())) for _ in range(n)]
+
+# Транспонирование и вывод результата
+for j in range(n):
+    row = [matrix[i][j] for i in range(n)]
+    print(" ".join(map(str, row)))
+https://stepik.org/lesson/416759/step/4
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Инициализация матрицы размером n x n с символами '.'
+matrix = [['.' for _ in range(n)] for _ in range(n)]
+
+# Заполнение средней строки и столбца символами '*'
+mid = n // 2
+for i in range(n):
+    matrix[mid][i] = '*'
+    matrix[i][mid] = '*'
+
+# Заполнение главной и побочной диагоналей символами '*'
+for i in range(n):
+    matrix[i][i] = '*'
+    matrix[i][n - i - 1] = '*'
+
+# Вывод матрицы
+for row in matrix:
+    print(" ".join(row))
+https://stepik.org/lesson/416759/step/5
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Чтение элементов матрицы
+matrix = [list(map(int, input().strip().split())) for _ in range(n)]
+
+# Проверка симметричности относительно побочной диагонали
+is_symmetric = True
+for i in range(n):
+    for j in range(n):
+        if matrix[i][j] != matrix[n - j - 1][n - i - 1]:
+            is_symmetric = False
+            break
+    if not is_symmetric:
+        break
+
+# Вывод результата
+if is_symmetric:
+    print("YES")
+else:
+    print("NO")
+https://stepik.org/lesson/416759/step/6
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Чтение элементов матрицы
+matrix = [list(map(int, input().strip().split())) for _ in range(n)]
+
+# Функция для проверки, содержит ли список все числа от 1 до n
+def is_valid_sequence(sequence):
+    return set(sequence) == set(range(1, n + 1))
+
+# Проверка всех строк
+for row in matrix:
+    if not is_valid_sequence(row):
+        print("NO")
+        exit()
+
+# Проверка всех столбцов
+for col in range(n):
+    column = [matrix[row][col] for row in range(n)]
+    if not is_valid_sequence(column):
+        print("NO")
+        exit()
+
+# Если все проверки пройдены
+print("YES")
+https://stepik.org/lesson/416759/step/7
+# Функция для преобразования шахматной нотации в индексы матрицы
+def chess_to_index(position):
+    column, row = position[0], position[1]
+    return (8 - int(row), ord(column) - ord('a'))
+
+# Инициализация доски
+board_size = 8
+board = [['.' for _ in range(board_size)] for _ in range(board_size)]
+
+# Чтение позиции ферзя и преобразование в индексы
+queen_position = input().strip()
+queen_row, queen_col = chess_to_index(queen_position)
+
+# Отметка клеток, которые бьет ферзь
+for i in range(board_size):
+    board[queen_row][i] = '*'  # Строка
+    board[i][queen_col] = '*'  # Столбец
+
+    if 0 <= queen_row + i < board_size and 0 <= queen_col + i < board_size:
+        board[queen_row + i][queen_col + i] = '*'  # Главная диагональ
+
+    if 0 <= queen_row - i < board_size and 0 <= queen_col + i < board_size:
+        board[queen_row - i][queen_col + i] = '*'  # Побочная диагональ
+
+    if 0 <= queen_row + i < board_size and 0 <= queen_col - i < board_size:
+        board[queen_row + i][queen_col - i] = '*'  # Главная диагональ
+
+    if 0 <= queen_row - i < board_size and 0 <= queen_col - i < board_size:
+        board[queen_row - i][queen_col - i] = '*'  # Побочная диагональ
+
+# Установка позиции ферзя
+board[queen_row][queen_col] = 'Q'
+
+# Вывод доски
+for row in board:
+    print(" ".join(row))
+https://stepik.org/lesson/416759/step/8
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Инициализация матрицы размером n x n
+matrix = [[0] * n for _ in range(n)]
+
+# Заполнение матрицы по заданному правилу
+for i in range(n):
+    for j in range(n):
+        matrix[i][j] = abs(i - j)
+
+# Вывод матрицы
+for row in matrix:
+    print(" ".join(map(str, row)))

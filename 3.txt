@@ -1,0 +1,14 @@
+https://stepik.org/lesson/440563/step/15
+
+def func(num1, num2):
+    return num1 % num2 == 0
+
+# Чтение входных данных
+num1 = int(input().strip())
+num2 = int(input().strip())
+
+# Проверка и вывод результата
+if func(num1, num2):
+    print("делится")
+else:
+    print("не делится")

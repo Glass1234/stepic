@@ -1,0 +1,546 @@
+https://stepik.org/lesson/416752/step/12
+list1 = [10, 20, [300, 400, [5000, 6000], 500], 30, 40]
+
+# Добавляем 7000 в список [5000, 6000]
+list1[2][2].append(7000)
+
+print(list1)
+https://stepik.org/lesson/416752/step/13
+list1 = ['a', 'b', ['c', ['d', 'e', ['f', 'g'], 'k'], 'l'], 'm', 'n']
+sub_list = ['h', 'i', 'j']
+
+# Используем extend() для добавления элементов sub_list в нужный подсписок
+list1[2][1][2].extend(sub_list)
+
+print(list1)
+https://stepik.org/lesson/416752/step/14
+list1 = [[1, 7, 8], [9, 7, 102], [6, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+
+maximum = float('-inf')  # Начальное значение для максимума
+
+for sublist in list1:
+    maximum = max(maximum, max(sublist))  # Находим максимум в каждом подсписке и обновляем общий максимум
+
+print(maximum)
+https://stepik.org/lesson/416752/step/15
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+
+# Разворачиваем каждый подсписок
+for sublist in list1:
+    sublist.reverse()
+
+print(list1)
+https://stepik.org/lesson/416752/step/16
+list1 = [[1, 7, 8], [9, 7, 102], [102, 106, 105], [100, 99, 98, 103], [1, 2, 3]]
+
+total = 0
+counter = 0
+
+for sublist in list1:
+    total += sum(sublist)  # Суммируем все элементы в подсписках
+    counter += len(sublist)  # Считаем количество всех элементов
+
+average = total / counter  # Находим среднее арифметическое
+
+print(average)
+https://stepik.org/lesson/416753/step/8
+n = int(input())
+
+list1 = [[i for i in range(1, n + 1)] for _ in range(n)]
+
+for sublist in list1:
+    print(sublist)
+https://stepik.org/lesson/416753/step/9
+n = int(input())
+
+for i in range(1, n + 1):
+    print([j for j in range(1, i + 1)])
+https://stepik.org/lesson/416753/step/10
+def pascal(n):
+    row = [1]
+    for _ in range(n):
+        row = [1] + [row[i] + row[i + 1] for i in range(len(row) - 1)] + [1]
+    return row
+
+n = int(input())
+print(pascal(n))
+https://stepik.org/lesson/416753/step/11
+def pascal_triangle(n):
+    row = [1]
+    for _ in range(n):
+        print(' '.join(map(str, row)))
+        row = [1] + [row[i] + row[i + 1] for i in range(len(row) - 1)] + [1]
+
+n = int(input())
+pascal_triangle(n)
+https://stepik.org/lesson/416753/step/12
+s = input().split()
+result = []
+temp = [s[0]]
+
+for i in range(1, len(s)):
+    if s[i] == s[i - 1]:
+        temp.append(s[i])
+    else:
+        result.append(temp)
+        temp = [s[i]]
+result.append(temp)
+
+print(result)
+https://stepik.org/lesson/416753/step/13
+def chunked(lst, n):
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
+
+s = input().split()
+n = int(input())
+print(chunked(s, n))
+https://stepik.org/lesson/416753/step/14
+input_data = input().split()
+output_data = [[]]
+for i in range(len(input_data)):
+    for j in range(len(input_data) - i):
+        output_data.append(input_data[j: j + i + 1])
+print(output_data)
+https://stepik.org/lesson/416754/step/8
+# Считываем размеры матрицы
+n = int(input().strip())
+m = int(input().strip())
+
+# Инициализируем пустой список для хранения матрицы
+matrix = []
+
+# Считываем элементы матрицы
+for _ in range(n):
+    row = [input().strip() for _ in range(m)]
+    matrix.append(row)
+
+# Выводим элементы матрицы
+for row in matrix:
+    print(' '.join(row))
+https://stepik.org/lesson/416754/step/9
+# Считываем размеры матрицы
+n = int(input().strip())
+m = int(input().strip())
+
+# Инициализируем список для хранения матрицы
+matrix = []
+
+# Считываем элементы матрицы и формируем её
+for _ in range(n):
+    row = [input().strip() for _ in range(m)]
+    matrix.append(row)
+
+# Выводим исходную матрицу
+for row in matrix:
+    print(' '.join(row))
+
+# Печатаем пустую строку
+print()
+
+# Транспонируем матрицу и выводим её
+transposed = zip(*matrix)
+for row in transposed:
+    print(' '.join(row))
+https://stepik.org/lesson/416754/step/10
+# Считываем размер матрицы
+n = int(input().strip())
+
+# Инициализируем переменную для хранения суммы элементов главной диагонали
+trace_sum = 0
+
+# Считываем элементы матрицы и вычисляем сумму элементов главной диагонали
+for i in range(n):
+    row = list(map(int, input().strip().split()))
+    trace_sum += row[i]
+
+# Выводим результат
+print(trace_sum)
+https://stepik.org/lesson/416754/step/11
+# Считываем размер матрицы
+n = int(input().strip())
+
+# Инициализируем список для хранения количества элементов, больших среднего арифметического, для каждой строки
+result = []
+
+# Считываем элементы матрицы построчно
+for _ in range(n):
+    row = list(map(int, input().strip().split()))
+    mean = sum(row) / len(row)
+    count = sum(1 for x in row if x > mean)
+    result.append(count)
+
+# Выводим результаты для каждой строки
+for count in result:
+    print(count)
+https://stepik.org/lesson/416754/step/12
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+max_element = float('-inf')
+for i in range(n):
+    for j in range(i + 1):
+        max_element = max(max_element, matrix[i][j])
+
+print(max_element)
+https://stepik.org/lesson/416754/step/13
+n = int(input())
+matrix = []
+
+for _ in range(n):
+    row = [int(i) for i in input().split()]
+    matrix.append(row)
+
+largest = matrix[0][0]
+
+for i in range(n):
+    for j in range(n):
+        if (i >= j and i + j + 1 <= n) or (i <= j and i + j + 1 >= n):
+            if matrix[i][j] > largest:
+                largest = matrix[i][j]
+
+print(largest)
+https://stepik.org/lesson/416754/step/14
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+upper_sum = 0
+right_sum = 0
+lower_sum = 0
+left_sum = 0
+
+for i in range(n):
+    for j in range(n):
+        if i < j and i + j < n - 1:  # Верхняя четверть
+            upper_sum += matrix[i][j]
+        if i < j and i + j > n - 1:  # Правая четверть
+            right_sum += matrix[i][j]
+        if i > j and i + j > n - 1:  # Нижняя четверть
+            lower_sum += matrix[i][j]
+        if i > j and i + j < n - 1:  # Левая четверть
+            left_sum += matrix[i][j]
+
+print(f"Верхняя четверть: {upper_sum}")
+print(f"Правая четверть: {right_sum}")
+print(f"Нижняя четверть: {lower_sum}")
+print(f"Левая четверть: {left_sum}")
+https://stepik.org/lesson/416755/step/1
+n = int(input())
+m = int(input())
+
+# Создаем матрицу и заполняем её таблицей умножения
+matrix = [[i * j for j in range(m)] for i in range(n)]
+
+# Выводим матрицу, каждый элемент занимает ровно 3 символа
+for row in matrix:
+    print(" ".join(str(elem).ljust(3) for elem in row))
+https://stepik.org/lesson/416755/step/2
+n = int(input())
+m = int(input())
+
+# Считываем матрицу
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+# Ищем максимальный элемент и его индексы
+max_value = matrix[0][0]
+max_position = (0, 0)
+
+for i in range(n):
+    for j in range(m):
+        if matrix[i][j] > max_value:
+            max_value = matrix[i][j]
+            max_position = (i, j)
+
+print(max_position[0], max_position[1])
+https://stepik.org/lesson/416755/step/3
+n = int(input())
+m = int(input())
+
+# Считываем матрицу
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+# Считываем номера столбцов для обмена
+i, j = map(int, input().split())
+
+# Меняем местами столбцы i и j
+for row in matrix:
+    row[i], row[j] = row[j], row[i]
+
+# Выводим изменённую матрицу
+for row in matrix:
+    print(" ".join(map(str, row)))
+https://stepik.org/lesson/416755/step/4
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+# Проверка симметричности относительно главной диагонали
+is_symmetric = True
+
+for i in range(n):
+    for j in range(i + 1, n):
+        if matrix[i][j] != matrix[j][i]:
+            is_symmetric = False
+            break
+    if not is_symmetric:
+        break
+
+print("YES" if is_symmetric else "NO")
+https://stepik.org/lesson/416755/step/5
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+for i in range(n):
+    matrix[i][i], matrix[n - 1 - i][i] = matrix[n - 1 - i][i], matrix[i][i]
+
+for row in matrix:
+    print(' '.join(map(str, row)))
+https://stepik.org/lesson/416755/step/6
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+for row in matrix[::-1]:
+    print(' '.join(map(str, row)))
+https://stepik.org/lesson/416755/step/7
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+rotated = [[matrix[n - j - 1][i] for j in range(n)] for i in range(n)]
+for row in rotated:
+    print(*row)
+https://stepik.org/lesson/416755/step/8
+position = input()
+board = [['.' for _ in range(8)] for _ in range(8)]
+
+columns = {'a': 0, 'b': 1, 'c': 2, 'd': 3, 'e': 4, 'f': 5, 'g': 6, 'h': 7}
+row = 8 - int(position[1])
+col = columns[position[0]]
+
+board[row][col] = 'N'
+
+moves = [(2, 1), (2, -1), (-2, 1), (-2, -1), (1, 2), (1, -2), (-1, 2), (-1, -2)]
+
+for dr, dc in moves:
+    nr, nc = row + dr, col + dc
+    if 0 <= nr < 8 and 0 <= nc < 8:
+        board[nr][nc] = '*'
+
+for row in board:
+    print(*row)
+https://stepik.org/lesson/416755/step/9
+n = int(input())
+matrix = [list(map(int, input().split())) for _ in range(n)]
+
+magic_sum = sum(matrix[0])
+is_magic = all(sum(row) == magic_sum for row in matrix) and \
+           all(sum(matrix[i][j] for i in range(n)) == magic_sum for j in range(n)) and \
+           sum(matrix[i][i] for i in range(n)) == magic_sum and \
+           sum(matrix[i][n - i - 1] for i in range(n)) == magic_sum and \
+           sorted(sum(matrix, [])) == list(range(1, n*n + 1))
+
+print("YES" if is_magic else "NO")
+https://stepik.org/lesson/416757/step/1
+n, m = map(int, input().split())
+matrix = [['.' if (i + j) % 2 == 0 else '*' for j in range(m)] for i in range(n)]
+
+for row in matrix:
+    print(*row)
+https://stepik.org/lesson/416757/step/2
+n = int(input())
+matrix = [[0 if i + j < n - 1 else (1 if i + j == n - 1 else 2) for j in range(n)] for i in range(n)]
+
+for row in matrix:
+    print(*row)
+https://stepik.org/lesson/416757/step/3
+n, m = map(int, input().split())
+matrix = [[i * m + j + 1 for j in range(m)] for i in range(n)]
+
+for row in matrix:
+    print(*[str(x).ljust(3) for x in row])
+https://stepik.org/lesson/416757/step/4
+n, m = map(int, input().split())
+matrix = [[i + j * n + 1 for j in range(m)] for i in range(n)]
+
+for row in matrix:
+    print(*[str(x).ljust(3) for x in row])
+https://stepik.org/lesson/416757/step/5
+n = int(input())
+matrix = [[1 if i == j or i + j == n - 1 else 0 for j in range(n)] for i in range(n)]
+
+for row in matrix:
+    print(*[str(x).ljust(3) for x in row])
+https://stepik.org/lesson/416757/step/6
+n = int(input().strip())
+
+matrix = [[0] * n for _ in range(n)]
+
+for i in range(n):
+    for j in range(n):
+        if i <= j and i + j <= n - 1:
+            matrix[i][j] = 1
+        if i >= j and i + j >= n - 1:
+            matrix[i][j] = 1
+
+for row in matrix:
+    print(' '.join(str(x).ljust(3) for x in row))
+https://stepik.org/lesson/416757/step/7
+n, m = map(int, input().strip().split())
+
+matrix = [[(i + j) % m + 1 for j in range(m)] for i in range(n)]
+
+for row in matrix:
+    print(' '.join(str(x).ljust(3) for x in row))
+https://stepik.org/lesson/416757/step/8
+n, m = map(int, input().strip().split())
+
+matrix = [[0] * m for _ in range(n)]
+
+current_number = 1
+for i in range(n):
+    if i % 2 == 0:
+        for j in range(m):
+            matrix[i][j] = current_number
+            current_number += 1
+    else:
+        for j in range(m-1, -1, -1):
+            matrix[i][j] = current_number
+            current_number += 1
+
+for row in matrix:
+    print(' '.join(str(x).ljust(3) for x in row))
+https://stepik.org/lesson/416757/step/9
+n, m = map(int, input().strip().split())
+
+matrix = [[0] * m for _ in range(n)]
+
+current_number = 1
+for diag in range(n + m - 1):
+    if diag < m:
+        row = 0
+        col = diag
+    else:
+        row = diag - m + 1
+        col = m - 1
+
+    while row < n and col >= 0:
+        matrix[row][col] = current_number
+        current_number += 1
+        row += 1
+        col -= 1
+
+for row in matrix:
+    print(' '.join(str(x).ljust(3) for x in row))
+https://stepik.org/lesson/416757/step/10
+def create_spiral_matrix(n, m):
+    matrix = [[0] * m for _ in range(n)]
+    num = 1
+    left, right = 0, m - 1
+    top, bottom = 0, n - 1
+
+    while left <= right and top <= bottom:
+        for i in range(left, right + 1):
+            matrix[top][i] = num
+            num += 1
+        top += 1
+
+        for i in range(top, bottom + 1):
+            matrix[i][right] = num
+            num += 1
+        right -= 1
+
+        if top <= bottom:
+            for i in range(right, left - 1, -1):
+                matrix[bottom][i] = num
+                num += 1
+            bottom -= 1
+
+        if left <= right:
+            for i in range(bottom, top - 1, -1):
+                matrix[i][left] = num
+                num += 1
+            left += 1
+
+    for row in matrix:
+        print(' '.join(f'{elem:3}' for elem in row))
+
+# Пример использования
+n, m = map(int, input().split())
+create_spiral_matrix(n, m)
+https://stepik.org/lesson/416756/step/9
+# Чтение входных данных
+n, m = map(int, input().split())
+
+# Создание и заполнение первой матрицы
+matrix1 = []
+for _ in range(n):
+    matrix1.append(list(map(int, input().split())))
+
+# Пустая строка
+input()
+
+# Создание и заполнение второй матрицы
+matrix2 = []
+for _ in range(n):
+    matrix2.append(list(map(int, input().split())))
+
+# Вычисление суммы матриц
+result_matrix = [[matrix1[i][j] + matrix2[i][j] for j in range(m)] for i in range(n)]
+
+# Вывод результирующей матрицы
+for row in result_matrix:
+    print(' '.join(map(str, row)))
+https://stepik.org/lesson/416756/step/10
+# Чтение входных данных
+n, m = map(int, input().split())
+
+# Создание и заполнение первой матрицы
+matrix1 = []
+for _ in range(n):
+    matrix1.append(list(map(int, input().split())))
+
+# Пустая строка
+input()
+
+# Чтение размеров второй матрицы
+m2, k = map(int, input().split())
+
+# Проверка совместимости матриц
+if m != m2:
+    raise ValueError("Количество столбцов первой матрицы должно совпадать с количеством строк второй матрицы.")
+
+# Создание и заполнение второй матрицы
+matrix2 = []
+for _ in range(m2):
+    matrix2.append(list(map(int, input().split())))
+
+# Инициализация результирующей матрицы
+result_matrix = [[0] * k for _ in range(n)]
+
+# Вычисление произведения матриц
+for i in range(n):
+    for j in range(k):
+        result_matrix[i][j] = sum(matrix1[i][l] * matrix2[l][j] for l in range(m))
+
+# Вывод результирующей матрицы
+for row in result_matrix:
+    print(' '.join(map(str, row)))
+https://stepik.org/lesson/416756/step/11
+import numpy as np
+
+# Чтение размера матрицы
+n = int(input().strip())
+
+# Чтение элементов матрицы
+matrix = []
+for _ in range(n):
+    matrix.append(list(map(int, input().strip().split())))
+
+# Чтение степени возведения
+m = int(input().strip())
+
+# Преобразование списка списков в numpy массив
+matrix = np.array(matrix)
+
+# Возведение матрицы в m-ую степень
+result_matrix = np.linalg.matrix_power(matrix, m)
+
+# Вывод результирующей матрицы
+for row in result_matrix:
+    print(' '.join(map(str, row)))
