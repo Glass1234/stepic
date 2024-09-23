@@ -1,0 +1,256 @@
+https://stepik.org/lesson/479457/step/14
+# Ввод данных
+n = int(input().strip())
+m = int(input().strip())
+k = int(input().strip())
+x = int(input().strip())
+y = int(input().strip())
+z = int(input().strip())
+
+# Расчет общего количества учеников
+total_students = n + m + k - x - y + z
+
+# Вывод результата
+print(total_students)
+https://stepik.org/lesson/479457/step/15
+n, m, k, x, y, z, t, a = (int(input()) for _ in range(8))
+
+i = n + m + k
+j = x + y + z
+
+print(3 * (t - i) + 2 * j)
+print(2 * i - j - 3 * t)
+print(a + i - j - t)
+https://stepik.org/lesson/481525/step/6
+numbers = {1.414, 12.5, 3.1415, 2.718, 9.8, 1.414, 1.1618, 1.324, 2.718, 1.324}
+
+# Нахождение минимального и максимального элемента
+min_value = min(numbers)
+max_value = max(numbers)
+
+# Вычисление суммы минимального и максимального элемента
+sum_min_max = min_value + max_value
+
+# Вывод результата
+print(sum_min_max)
+https://stepik.org/lesson/481525/step/7
+numbers = {20, 6, 8, 18, 18, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 12, 8, 8, 10, 4, 2, 2, 2, 16, 20}
+
+# Нахождение суммы всех элементов
+total_sum = sum(numbers)
+
+# Нахождение количества элементов
+count = len(numbers)
+
+# Вычисление среднего арифметического
+average = total_sum / count
+
+# Вывод результата
+print(average)
+https://stepik.org/lesson/481525/step/10
+numbers = {9089, -67, -32, 1, 78, 23, -65, 99, 9089, 34, -32, 0, -67, 1, 11, 111, 111, 1, 23}
+
+# Вычисление суммы квадратов элементов множества
+sum_of_squares = sum(x ** 2 for x in numbers)
+
+# Вывод результата
+print(sum_of_squares)
+https://stepik.org/lesson/481525/step/11
+fruits = {'apple', 'banana', 'cherry', 'avocado', 'pineapple', 'apricot', 'banana', 'avocado', 'grapefruit'}
+
+# Преобразование множества в отсортированный список по убыванию
+sorted_fruits = sorted(fruits, reverse=True)
+
+# Вывод каждого элемента на отдельной строке
+for fruit in sorted_fruits:
+    print(fruit)
+https://stepik.org/lesson/481525/step/12
+print(len(set(input())))
+https://stepik.org/lesson/481525/step/13
+s = input().strip()
+print("YES" if len(s) == len(set(s)) else "NO")
+https://stepik.org/lesson/481525/step/14
+s1 = input().strip()
+s2 = input().strip()
+all_digits = set('0123456789')
+used_digits = set(s1 + s2)
+print("YES" if used_digits == all_digits else "NO")
+https://stepik.org/lesson/481525/step/15
+s1 = input().strip()
+s2 = input().strip()
+print("YES" if set(s1) == set(s2) else "NO")
+https://stepik.org/lesson/481525/step/16
+words = input().strip().split()
+sets = [set(word) for word in words]
+print("YES" if all(s == sets[0] for s in sets) else "NO")
+https://stepik.org/lesson/445791/step/11
+n = int(input().strip())
+for _ in range(n):
+    word = input().strip().lower()
+    unique_chars = set(word)
+    print(len(unique_chars))
+https://stepik.org/lesson/445791/step/12
+n = int(input().strip())
+unique_chars = set()
+
+for _ in range(n):
+    word = input().strip().lower()
+    unique_chars.update(word)
+
+print(len(unique_chars))
+https://stepik.org/lesson/445791/step/13
+import string
+
+# Чтение строки
+text = input().strip()
+
+# Удаление знаков препинания
+translator = str.maketrans('', '', string.punctuation)
+text = text.translate(translator)
+
+# Приведение текста к нижнему регистру и разбиение на слова
+words = text.lower().split()
+
+# Нахождение количества уникальных слов
+unique_words = set(words)
+
+# Вывод результата
+print(len(unique_words))
+https://stepik.org/lesson/445791/step/14
+# Чтение строки чисел
+input_str = input().strip()
+
+# Преобразование строки чисел в список строк, удаляя ведущие нули
+numbers = input_str.split()
+normalized_numbers = [str(int(num)) for num in numbers]
+
+# Множество для отслеживания уже встреченных чисел
+seen_numbers = set()
+
+# Проверка каждого числа и вывод результата
+for num in normalized_numbers:
+    if num in seen_numbers:
+        print("YES")
+    else:
+        print("NO")
+        seen_numbers.add(num)
+https://stepik.org/lesson/445791/step/15
+https://stepik.org/lesson/482377/step/13
+print(len(set(input().split()) & set(input().split())))
+https://stepik.org/lesson/482377/step/14
+print(*sorted(map(int, set(input().split()) & set(input().split()))))
+https://stepik.org/lesson/482377/step/15
+print(*sorted(map(int, set(input().split()) - set(input().split()))))
+https://stepik.org/lesson/482377/step/16
+n = int(input())
+common_digits = set(input())
+for _ in range(n - 1):
+    common_digits &= set(input())
+print(*sorted(common_digits))
+https://stepik.org/lesson/483114/step/8
+print('YES' if set(input()) & set(input()) else 'NO')
+https://stepik.org/lesson/483114/step/9
+print('YES' if set(input()).issuperset(set(input())) else 'NO')
+https://stepik.org/lesson/483114/step/10
+first = set(input().split())
+second = set(input().split())
+third = set(input().split())
+
+result = (first & second) - third
+print(*sorted(result, key=int, reverse=True))
+https://stepik.org/lesson/483114/step/11
+from collections import Counter
+
+# Чтение оценок
+scores1 = set(input().split())
+scores2 = set(input().split())
+scores3 = set(input().split())
+
+# Объединение всех уникальных оценок
+all_scores = scores1.union(scores2).union(scores3)
+
+# Подсчет количества появлений каждой оценки в каждом списке
+count = Counter()
+for score in all_scores:
+    count[score] = sum(
+        [score in scores1, score in scores2, score in scores3]
+    )
+
+# Нахождение оценок, встречающихся не более чем у двух учеников
+result = [score for score, num_lists in count.items() if num_lists <= 2]
+
+# Вывод результатов в порядке возрастания
+print(*sorted(result, key=int))
+https://stepik.org/lesson/483114/step/12
+# Чтение оценок
+scores1 = set(input().split())
+scores2 = set(input().split())
+scores3 = set(input().split())
+
+# Нахождение оценок третьего ученика, которые не встречаются ни у первого, ни у второго
+unique_scores3 = scores3 - (scores1 | scores2)
+
+# Вывод результатов в порядке убывания
+print(*sorted(unique_scores3, key=int, reverse=True))
+https://stepik.org/lesson/483114/step/13
+# Чтение оценок
+scores1 = set(input().split())
+scores2 = set(input().split())
+scores3 = set(input().split())
+
+# Объединение всех оценок
+present_scores = scores1 | scores2 | scores3
+
+# Определение всех возможных оценок
+all_scores = set(map(str, range(11)))
+
+# Оценки, не встречающиеся ни у одного из учеников
+missing_scores = all_scores - present_scores
+
+# Вывод результатов в порядке возрастания
+print(*sorted(missing_scores, key=int))
+https://stepik.org/lesson/445793/step/3
+items = [10, '30', 30, 10, '56', 34, '12', 90, 89, 34, 45, '67', 12, 10, 90, 23, '45', 56, '56', 1, 5, '6', 5]
+
+# Используем генератор множества для преобразования всех элементов в числа и удаления дубликатов
+unique_numbers = {int(item) for item in items}
+
+# Выводим результат в упорядоченном виде
+print(*sorted(unique_numbers))
+https://stepik.org/lesson/445793/step/4
+words = ['Plum', 'Grapefruit', 'apple', 'orange', 'pomegranate', 'Cranberry', 'lime', 'Lemon', 'grapes', 'persimmon', 'tangerine', 'Watermelon', 'currant', 'Almond']
+
+# Используем генератор множества для получения первых букв слов в нижнем регистре
+first_letters = {word[0].lower() for word in words}
+
+# Выводим результат в алфавитном порядке
+print(*sorted(first_letters))
+https://stepik.org/lesson/445793/step/5
+import string
+
+sentence = '''My very photogenic mother died in a freak accident (picnic, lightning) when I was three, and, save for a pocket of warmth in the darkest past, nothing of her subsists within the hollows and dells of memory, over which, if you can still stand my style (I am writing under observation), the sun of my infancy had set: surely, you all know those redolent remnants of day suspended, with the midges, about some hedge in bloom or suddenly entered and traversed by the rambler, at the bottom of a hill, in the summer dusk; a furry warmth, golden midges.'''
+
+# Удаляем знаки пунктуации и приводим строку к нижнему регистру
+translator = str.maketrans('', '', string.punctuation)
+cleaned_sentence = sentence.translate(translator).lower()
+
+# Получаем множество уникальных слов
+unique_words = {word for word in cleaned_sentence.split()}
+
+# Выводим результат в алфавитном порядке
+print(*sorted(unique_words))
+https://stepik.org/lesson/445793/step/6
+import string
+
+sentence = '''My very photogenic mother died in a freak accident (picnic, lightning) when I was three, and, save for a pocket of warmth in the darkest past, nothing of her subsists within the hollows and dells of memory, over which, if you can still stand my style (I am writing under observation), the sun of my infancy had set: surely, you all know those redolent remnants of day suspended, with the midges, about some hedge in bloom or suddenly entered and traversed by the rambler, at the bottom of a hill, in the summer dusk; a furry warmth, golden midges.'''
+
+# Удаляем знаки пунктуации и приводим строку к нижнему регистру
+translator = str.maketrans('', '', string.punctuation)
+cleaned_sentence = sentence.translate(translator).lower()
+
+# Используем генератор множества для получения уникальных слов длиной меньше 4 символов
+short_words = {word for word in cleaned_sentence.split() if len(word) < 4}
+
+# Выводим результат в алфавитном порядке
+print(*sorted(short_words))
+https://stepik.org/lesson/445793/step/7

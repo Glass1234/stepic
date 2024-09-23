@@ -1,0 +1,191 @@
+https://stepik.org/lesson/479453/step/15
+set1 = {'p', 'a', 't', 'f'}
+set2 = {'a', 't', 'f'}
+
+print(set1 - set2)
+https://stepik.org/lesson/445985/step/2
+# Ввод данных
+n = int(input())
+m = int(input())
+k = int(input())
+p = int(input())
+
+# Рассчитываем количество учеников, которые выполнили домашнее задание
+students_completed_homework = n - (m + k - p)
+
+# Выводим результат
+print(students_completed_homework)
+https://stepik.org/lesson/445985/step/3
+from collections import Counter
+
+# Ввод данных
+data = input().strip().split()
+
+# Подсчет частоты появления каждого показания
+frequency = Counter(data)
+
+# Подсчет количества показаний, которые нужно удалить
+deletions_needed = sum(count - 1 for count in frequency.values() if count > 1)
+
+# Вывод результата
+print(deletions_needed)
+https://stepik.org/lesson/445985/step/4
+# Ввод данных
+n = int(input().strip())
+cities = set()
+
+# Считывание названных городов и добавление их в множество
+for _ in range(n):
+    city = input().strip()
+    cities.add(city)
+
+# Считывание нового города
+new_city = input().strip()
+
+# Проверка, был ли город упомянут ранее
+if new_city in cities:
+    print("REPEAT")
+else:
+    print("OK")
+https://stepik.org/lesson/445985/step/5
+# Ввод данных
+m = int(input().strip())
+n = int(input().strip())
+
+# Создаем множество для хранения книг из домашней библиотеки
+library_books = set()
+
+# Считываем книги из домашней библиотеки и добавляем их в множество
+for _ in range(m):
+    book = input().strip()
+    library_books.add(book)
+
+# Проверяем каждую книгу из списка на лето
+for _ in range(n):
+    book_to_check = input().strip()
+    if book_to_check in library_books:
+        print("YES")
+    else:
+        print("NO")
+https://stepik.org/lesson/445985/step/6
+# Ввод данных
+first_list = input().strip().split()
+second_list = input().strip().split()
+
+# Преобразование в множества
+set1 = set(first_list)
+set2 = set(second_list)
+
+# Нахождение пересечения
+intersection = set1 & set2
+
+# Проверка наличия общих чисел и вывод результата
+if intersection:
+    # Преобразование пересечения в список, сортировка по убыванию и вывод
+    result = sorted(intersection, key=int, reverse=True)
+    print(" ".join(result))
+else:
+    print("BAD DAY")
+https://stepik.org/lesson/445985/step/7
+# Ввод данных
+shown_numbers = input().strip().split()
+candidate_answers = input().strip().split()
+
+# Преобразование строк в множества
+shown_set = set(shown_numbers)
+answers_set = set(candidate_answers)
+
+# Проверка условия
+if shown_set == answers_set:
+    print("YES")
+else:
+    print("NO")
+https://stepik.org/lesson/445985/step/8
+# Ввод данных
+m = int(input().strip())
+n = int(input().strip())
+
+# Считывание фамилий учеников, изучающих математику
+math_students = set(input().strip() for _ in range(m))
+
+# Считывание фамилий учеников, изучающих информатику
+info_students = set(input().strip() for _ in range(n))
+
+# Найти фамилии, изучающих только математику
+only_math_students = math_students - info_students
+
+# Вывод количества учеников, изучающих только математику
+print(len(only_math_students))
+https://stepik.org/lesson/445985/step/9
+# Ввод данных
+m = int(input().strip())
+n = int(input().strip())
+
+# Считывание фамилий учеников, изучающих математику
+math_students = set(input().strip() for _ in range(m))
+
+# Считывание фамилий учеников, изучающих информатику
+info_students = set(input().strip() for _ in range(n))
+
+# Найти фамилии, изучающих только математику
+only_math_students = math_students - info_students
+
+# Найти фамилии, изучающих только информатику
+only_info_students = info_students - math_students
+
+# Общее количество учеников, изучающих только один предмет
+total_only_one_subject = len(only_math_students) + len(only_info_students)
+
+# Вывод результата
+if total_only_one_subject > 0:
+    print(total_only_one_subject)
+else:
+    print("NO")
+https://stepik.org/lesson/445985/step/10
+# Ввод данных
+names1 = input().strip().split()
+names2 = input().strip().split()
+
+# Создание множеств из двух списков фамилий
+set1 = set(names1)
+set2 = set(names2)
+
+# Объединение множеств
+all_names = set1 | set2
+
+# Сортировка и вывод фамилий
+sorted_names = sorted(all_names)
+print(" ".join(sorted_names))
+https://stepik.org/lesson/445985/step/11
+m, n = [int(input()) for _ in range(2)]
+
+# список студентов (в том числе с повторами)
+students_list = [input() for _ in range(m + n)]
+# множество студентов (уже без повторов)
+students_set = set(students_list)
+
+# изучающие сразу два предмета
+both_subjects = len(students_list) - len(students_set)
+# изучающие только один предмет
+only_one_subject = len(students_set) - both_subjects
+
+print(only_one_subject or "NO")
+https://stepik.org/lesson/445985/step/12
+m = int(input())  # Количество уроков
+
+# Инициализируем множество присутствующих на всех уроках с фамилий первого урока
+common_students = set()
+for _ in range(m):
+    n_i = int(input())  # Количество фамилий на текущем уроке
+    current_students = set(input().strip() for _ in range(n_i))
+
+    if not common_students:
+        # Для первого урока заполняем common_students
+        common_students = current_students
+    else:
+        # Для последующих уроков пересекаем с уже найденными фамилиями
+        common_students &= current_students
+
+# Выводим фамилии в лексикографическом порядке
+for student in sorted(common_students):
+    print(student)
