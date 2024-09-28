@@ -1,0 +1,562 @@
+https://stepik.org/lesson/503029/step/16
+def matrix(n=1, m=None, value=0):
+    if m is None:
+        m = n
+    return [[value for _ in range(m)] for _ in range(n)]
+
+
+https://stepik.org/lesson/503036/step/10
+def count_args(*args):
+    return len(args)
+
+
+https://stepik.org/lesson/503036/step/11
+def sq_sum(*args):
+    return sum(x**2 for x in args)
+
+
+https://stepik.org/lesson/503036/step/12
+def mean(*args):
+    numeric_args = [x for x in args if type(x) in (int, float)]
+    return sum(numeric_args) / len(numeric_args) if numeric_args else 0.0
+
+
+https://stepik.org/lesson/503036/step/13
+def greet(*names):
+    if len(names) == 1:
+        return f"Hello, {names[0]}!"
+    return f"Hello, {' and '.join(names[:-1])} and {names[-1]}!"
+
+
+https://stepik.org/lesson/503036/step/14
+def print_products(*args):
+    products = [arg for arg in args if isinstance(arg, str) and arg]
+    if not products:
+        print("Нет продуктов")
+    else:
+        for index, product in enumerate(products, start=1):
+            print(f"{index}) {product}")
+
+
+https://stepik.org/lesson/503036/step/15
+def info_kwargs(**kwargs):
+    for key in sorted(kwargs):
+        print(f"{key}: {kwargs[key]}")
+
+https://stepik.org/lesson/508939/step/10
+numbers = [(10, 10, 10), (30, 45, 56), (81, 39), (1, 2, 3), (12,), (-2, -4, 100), (1, 2, 99), (89, 9, 34), (10, 20, 30, -2), (50, 40, 50), (34, 78, 65), (-5, 90, -1, -5), (1, 2, 3, 4, 5, 6), (-9, 8, 4), (90, 1, -45, -21)]
+min_tuple = min(numbers, key=lambda x: sum(x) / len(x))
+max_tuple = max(numbers, key=lambda x: sum(x) / len(x))
+
+print(min_tuple)
+print(max_tuple)
+
+
+https://stepik.org/lesson/508939/step/11
+points = [(-1, 1), (5, 6), (12, 0), (4, 3), (0, 1), (-3, 2), (0, 0), (-1, 3), (2, 0), (3, 0), (-9, 1), (3, 6), (8, 8)]
+
+sorted_points = sorted(points, key=lambda p: p[0]**2 + p[1]**2)
+
+print(sorted_points)
+
+
+https://stepik.org/lesson/508939/step/12
+numbers = [
+    (10, 10, 10), (30, 45, 56), (81, 80, 39), (1, 2, 3),
+    (12, 45, 67), (-2, -4, 100), (1, 2, 99), (89, 90, 34),
+    (10, 20, 30), (50, 40, 50), (34, 78, 65), (-5, 90, -1)
+]
+
+sorted_numbers = sorted(numbers, key=lambda x: min(x) + max(x))
+
+print(sorted_numbers)
+
+
+https://stepik.org/lesson/508939/step/13
+athletes = [
+    ("Рустам", 10, 128, 30),
+    ("Дима", 10, 130, 35),
+    ("Тимур", 11, 135, 39),
+    ("Руслан", 9, 140, 33),
+    ("Матвей", 17, 168, 68),
+    ("Амир", 16, 170, 70),
+    ("Рома", 16, 188, 100),
+    ("Петя", 15, 190, 90)
+]
+
+field = int(input())
+
+sorted_athletes = sorted(athletes, key=lambda x: (x[field - 1], x[0]) if field != 1 else x[0])
+
+for athlete in sorted_athletes:
+    print(*athlete)
+
+
+https://stepik.org/lesson/508939/step/14
+import math
+
+def square(x):
+    return x ** 2
+
+def cube(x):
+    return x ** 3
+
+def square_root(x):
+    return math.sqrt(x)
+
+def modulus(x):
+    return abs(x)
+
+def sine(x):
+    return math.sin(x)
+
+functions = {
+    "квадрат": square,
+    "куб": cube,
+    "корень": square_root,
+    "модуль": modulus,
+    "синус": sine
+}
+
+number = int(input())
+function_name = input()
+
+result = functions[function_name](number)
+print(result)
+
+
+https://stepik.org/lesson/508939/step/15
+def sum_of_digits(n):
+    return sum(int(digit) for digit in str(n))
+
+numbers = input().split()
+sorted_numbers = sorted(numbers, key=sum_of_digits)
+
+print(" ".join(sorted_numbers))
+
+
+https://stepik.org/lesson/508939/step/16
+def sum_of_digits(n):
+    return sum(int(digit) for digit in str(n))
+
+numbers = input().split()
+sorted_numbers = sorted(numbers, key=lambda x: (sum_of_digits(x), int(x)))
+
+print(" ".join(sorted_numbers))
+
+https://stepik.org/lesson/508556/step/10
+def map(function, items):
+    result = []
+    for item in items:
+        result.append(function(item))
+    return result
+def round_number(x):
+    return round(x, 2)
+
+numbers = [3.56773, 5.57668, 4.00914, 56.24241, 9.01344, 32.12013, 23.22222, 90.09873, 45.45, 314.1528, 2.71828, 1.41546]
+
+rounded_numbers = map(round_number, numbers)
+
+for num in rounded_numbers:
+    print(num)
+
+https://stepik.org/lesson/508556/step/11
+def map(function, items):
+    result = []
+    for item in items:
+        result.append(function(item))
+    return result
+
+
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):
+            result.append(item)
+    return result
+
+def cube(x):
+    return x ** 3
+
+def is_three_digit_and_remainder_2(n):
+    return 100 <= n < 1000 and n % 5 == 2
+
+numbers = [
+    1014, 1321, 675, 1215, 56, 1386, 1385, 431, 1058, 486, 1434,
+    696, 1016, 1084, 424, 1189, 475, 95, 1434, 1462, 815, 776,
+    657, 1225, 912, 537, 1478, 1176, 544, 488, 668, 944, 207,
+    266, 1309, 1027, 257, 1374, 1289, 1155, 230, 866, 708, 144,
+    1434, 1163, 345, 394, 560, 338, 232, 182, 1438, 1127, 928,
+    1309, 98, 530, 1013, 898, 669, 105, 130, 1363, 947, 72,
+    1278, 166, 904, 349, 831, 1207, 1496, 370, 725, 926, 175,
+    959, 1282, 336, 1268, 351, 1439, 186, 273, 1008, 231, 138,
+    142, 433, 456, 1268, 1018, 1274, 387, 120, 340, 963, 832, 1127
+]
+
+result = filter(is_three_digit_and_remainder_2, numbers)
+cubed_numbers = map(cube, result)
+
+for num in cubed_numbers:
+    print(num)
+
+
+https://stepik.org/lesson/508556/step/12
+def reduce(operation, items, initial_value):
+    acc = initial_value
+    for item in items:
+        acc = operation(acc, item)
+    return acc
+
+numbers = [
+    97, 42, 9, 32, 3, 45, 31, 77, -1, 11, -2, 75, 5, 51, 34, 28,
+    46, 1, -8, 84, 16, 51, 90, 56, 65, 90, 23, 35, 11, -10, 70,
+    90, 90, 12, 96, 58, -8, -4, 91, 76, 94, 60, 72, 43, 4, -6,
+    -5, 51, 58, 60, 30, 38, 67, 62, 36, 72, 34, 82, 62, -1, 60,
+    82, 87, 81, -7, 57, 26, 36, 17, 43, 80, 40, 75, 94, 91, 64,
+    38, 72, 29, 84, 38, 35, 7, 54, 31, 95, 78, 27, 82, 1, 64,
+    94, 31, 29, -8, 98, 24, 61, 7, 73
+]
+
+# С помощью функции reduce()
+sum_of_squares_reduce = reduce(lambda acc, x: acc + x ** 2, numbers, 0)
+print(sum_of_squares_reduce)
+
+
+https://stepik.org/lesson/508556/step/13
+def map(function, items):
+    result = []
+    for item in items:
+        result.append(function(item))
+    return result
+
+def filter(function, items):
+    result = []
+    for item in items:
+        if function(item):
+            result.append(item)
+    return result
+
+numbers = [
+    77, 293, 28, 242, 213, 285, 71, 286, 144, 276, 61, 298, 280,
+    214, 156, 227, 228, 51, -4, 202, 58, 99, 270, 219, 94, 253,
+    53, 235, 9, 158, 49, 183, 166, 205, 183, 266, 180, 6, 279,
+    200, 208, 231, 178, 201, 260, -35, 152, 115, 79, 284, 181,
+    92, 286, 98, 271, 259, 258, 196, -8, 43, 2, 128, 143, 43,
+    297, 229, 60, 254, -9, 5, 187, 220, -8, 111, 285, 5, 263,
+    187, 192, -9, 268, -9, 23, 71, 135, 7, -161, 65, 135, 29,
+    148, 242, 33, 35, 211, 5, 161, 46, 159, 23, 169, 23, 172,
+    184, -7, 228, 129, 274, 73, 197, 272, 54, 278, 26, 280,
+    13, 171, 2, 79, -2, 183, 10, 236, 276, 4, 29, -10, 41,
+    269, 94, 279, 129, 39, 92, -63, 263, 219, 57, 18, 236,
+    291, 234, 10, 250, 0, 64, 172, 216, 30, 15, 229, 205,
+    123, -105
+]
+
+# Фильтрация двузначных чисел, которые делятся на 7
+two_digit_numbers_divisible_by_7 = filter(
+    lambda x: 10 <= abs(x) < 100 and x % 7 == 0, numbers
+)
+
+# Вычисление суммы квадратов отфильтрованных чисел
+sum_of_squares = sum(map(lambda x: x ** 2, two_digit_numbers_divisible_by_7))
+
+print(sum_of_squares)
+
+
+https://stepik.org/lesson/508556/step/14
+def func_apply(func, values):
+    return [func(value) for value in values]
+
+https://stepik.org/lesson/503099/step/15
+from functools import reduce
+
+floats = [4.35, 6.09, 3.25, 9.77, 2.16, 8.88, 4.59, 34.23, 12.12, 4.67, 2.45, 9.32]
+words = ['racecar', 'akinremi', 'deed', 'temidayo', 'omoseun', 'civic', 'TATTARRATTAT', 'malayalam', 'nun']
+numbers = [4, 6, 9, 23, 5]
+
+# Преобразование floats
+map_result = list(map(lambda num: round(num ** 2, 1), floats))
+
+# Фильтрация палиндромов
+filter_result = list(filter(lambda word: len(word) > 4 and word.lower() == word.lower()[::-1], words))
+
+# Нахождение произведения чисел
+reduce_result = reduce(lambda num1, num2: num1 * num2, numbers, 1)
+
+print(map_result)
+print(filter_result)
+print(reduce_result)
+
+
+https://stepik.org/lesson/503099/step/16
+from functools import reduce
+
+data = [['Tokyo', 35676000, 'primary'],
+        ['New York', 19354922, 'nan'],
+        ['Mexico City', 19028000, 'primary'],
+        ['Mumbai', 18978000, 'admin'],
+        ['Sao Paulo', 18845000, 'admin'],
+        ['Delhi', 15926000, 'admin'],
+        ['Shanghai', 14987000, 'admin'],
+        ['Kolkata', 14787000, 'admin'],
+        ['Los Angeles', 12815475, 'nan'],
+        ['Dhaka', 12797394, 'primary'],
+        ['Buenos Aires', 12795000, 'primary'],
+        ['Karachi', 12130000, 'admin'],
+        ['Cairo', 11893000, 'primary'],
+        ['Rio de Janeiro', 11748000, 'admin'],
+        ['Osaka', 11294000, 'admin'],
+        ['Beijing', 11106000, 'primary'],
+        ['Manila', 11100000, 'primary'],
+        ['Moscow', 10452000, 'primary'],
+        ['Istanbul', 10061000, 'admin'],
+        ['Paris', 9904000, 'primary']]
+
+cities = list(filter(lambda x: x[1] > 10000000 and x[2] == 'primary', data))
+sorted_cities = sorted(map(lambda x: x[0], cities))
+
+result = "Cities: " + ", ".join(sorted_cities)
+print(result)
+
+https://stepik.org/lesson/512854/step/5
+func = lambda x: x % 19 == 0 or x % 13 == 0
+
+
+https://stepik.org/lesson/512854/step/6
+func = lambda s: s.lower().startswith('a') and s.lower().endswith('a')
+
+
+https://stepik.org/lesson/512854/step/7
+is_non_negative_num = lambda s: s.replace('.', '', 1).isdigit() and float(s) >= 0
+
+
+https://stepik.org/lesson/512854/step/8
+def is_num(s):
+    validate = lambda x: (
+        x.count('-') <= 1 and
+        x.count('.') <= 1 and
+        x.replace('.', '', 1).replace('-', '', 1).isdigit() and
+        not (x.count('-') == 1 and x.index('-') > 0)
+    )
+    return validate(s)
+
+
+
+https://stepik.org/lesson/512854/step/9
+words = [
+    'beverage', 'monday', 'abroad', 'bias', 'abuse', 'abolish', 'abuse',
+    'abuse', 'bid', 'wednesday', 'able', 'betray', 'accident', 'abduct',
+    'bigot', 'bet', 'abandon', 'besides', 'access', 'friday', 'bestow',
+    'abound', 'absent', 'beware', 'abundant', 'abnormal', 'aboard',
+    'about', 'accelerate', 'abort', 'thursday', 'tuesday', 'sunday',
+    'berth', 'beyond', 'benevolent', 'abate', 'abide', 'bicycle',
+    'beside', 'accept', 'berry', 'bewilder', 'abrupt', 'saturday',
+    'accessory', 'absorb'
+]
+
+result = sorted(filter(lambda word: len(word) == 6, words))
+
+print(' '.join(result))
+
+
+https://stepik.org/lesson/512854/step/10
+numbers = [
+    46, 61, 34, 17, 56, 26, 93, 1, 3, 82, 71, 37, 80, 27, 77, 94, 34,
+    100, 36, 81, 33, 81, 66, 83, 41, 80, 80, 93, 40, 34, 32, 16, 5,
+    16, 40, 93, 36, 65, 8, 19, 8, 75, 66, 21, 72, 32, 41, 59, 35,
+    64, 49, 78, 83, 27, 57, 53, 43, 35, 48, 17, 19, 40, 90, 57, 77,
+    56, 80, 95, 90, 27, 26, 6, 4, 23, 52, 39, 63, 74, 15, 66, 29,
+    88, 94, 37, 44, 2, 38, 36, 32, 49, 5, 33, 60, 94, 89, 8, 36,
+    94, 46, 33
+]
+
+# 1) Фильтруем: отсекаем нечетные числа больше 47
+filtered_numbers = filter(lambda n: n <= 47 or not (n > 47 and n % 2 != 0), numbers)
+
+# 2) Делим четные числа на 2, возвращаем нечетные без изменений
+result = map(lambda x: x // 2 if x % 2 == 0 else x, filtered_numbers)
+
+# Выводим результат
+print(' '.join(map(str, result)))
+
+
+https://stepik.org/lesson/512854/step/11
+data = [
+    (19542209, 'New York'), (4887871, 'Alabama'), (1420491, 'Hawaii'),
+    (626299, 'Vermont'), (1805832, 'West Virginia'), (39865590, 'California'),
+    (11799448, 'Ohio'), (10711908, 'Georgia'), (10077331, 'Michigan'),
+    (10439388, 'Virginia'), (7705281, 'Washington'), (7151502, 'Arizona'),
+    (7029917, 'Massachusetts'), (6910840, 'Tennessee')
+]
+
+# Сортировка по убыванию по последнему символу в названии штата
+sorted_data = sorted(data, key=lambda x: x[1][-1], reverse=True)
+
+# Вывод результата
+for population, state in sorted_data:
+    print(f"{state}: {population}")
+
+
+https://stepik.org/lesson/512854/step/12
+data = [
+    'год', 'человек', 'время', 'дело', 'жизнь', 'день', 'рука',
+    'раз', 'работа', 'слово', 'место', 'лицо', 'друг', 'глаз',
+    'вопрос', 'дом', 'сторона', 'страна', 'мир', 'случай',
+    'голова', 'ребенок', 'сила', 'конец', 'вид', 'система',
+    'часть', 'город', 'отношение', 'женщина', 'деньги']
+
+# Сортировка по длине слов и лексикографически
+sorted_data = sorted(data, key=lambda x: (len(x), x))
+
+# Вывод результата
+print(' '.join(sorted_data))
+
+
+https://stepik.org/lesson/512854/step/13
+mixed_list = [
+    'tuesday', 'abroad', 'abuse', 'beside', 'monday', 'abate', 'accessory',
+    'absorb', 1384878, 'sunday', 'about', 454805, 'saturday', 'abort',
+    2121919, 2552839, 977970, 1772933, 1564063, 'abduct', 901271,
+    2680434, 'bicycle', 'accelerate', 1109147, 942908, 'berry',
+    433507, 'bias', 'bestow', 1875665, 'besides', 'bewilder', 1586517,
+    375290, 1503450, 2713047, 'abnormal', 2286106, 242192, 701049,
+    2866491, 'benevolent', 'bigot', 'abuse', 'abrupt', 343772,
+    'able', 2135748, 690280, 686008, 'beyond', 2415643, 'aboard',
+    'bet', 859105, 'accident', 2223166, 894187, 146564, 1251748,
+    2851543, 1619426, 2263113, 1618068, 'berth', 'abolish', 'beware',
+    2618492, 1555062, 'access', 'absent', 'abundant', 2950603,
+    'betray', 'beverage', 'abide', 'abandon', 2284251, 'wednesday',
+    2709698, 'thursday', 810387, 'friday', 2576799, 2213552,
+    1599022, 'accept', 'abuse', 'abound', 1352953, 'bid',
+    1805326, 1499197, 2241159, 605320, 2347441
+]
+
+# Находим максимальное числовое значение
+max_value = max(mixed_list, key=lambda x: x if isinstance(x, int) else float('-inf'))
+
+# Выводим результат
+print(max_value)
+
+
+https://stepik.org/lesson/512854/step/14
+mixed_list = [
+    'beside', 48, 'accelerate', 28, 'beware', 'absorb', 'besides',
+    'berry', 15, 65, 'abate', 'thursday', 76, 70, 94, 35, 36,
+    'berth', 41, 'abnormal', 'bicycle', 'bid', 'sunday',
+    'saturday', 87, 'bigot', 41, 'abort', 13, 60, 'friday',
+    26, 13, 'accident', 'access', 40, 26, 20, 75, 13, 40,
+    67, 12, 'abuse', 78, 10, 80, 'accessory', 20, 'bewilder',
+    'benevolent', 'bet', 64, 38, 65, 51, 95, 'abduct',
+    37, 98, 99, 14, 'abandon', 'accept', 46, 'abide',
+    'beyond', 19, 'about', 76, 26, 'abound', 12, 95,
+    'wednesday', 'abundant', 'abrupt', 'aboard', 50, 89,
+    'tuesday', 66, 'bestow', 'absent', 76, 46, 'betray',
+    47, 'able', 11
+]
+
+# Сортировка списка
+sorted_list = sorted(mixed_list, key=lambda x: (isinstance(x, str), x))
+
+# Выводим отсортированный список
+print(" ".join(map(str, sorted_list)))
+
+
+https://stepik.org/lesson/512854/step/15
+# Ввод компонентов цвета
+input_color = input().strip()
+
+# Разделяем и вычисляем противоположные компоненты
+opposite_color = list(map(lambda x: 255 - int(x), input_color.split()))
+
+# Выводим результат
+print(*opposite_color)
+
+
+https://stepik.org/lesson/512854/step/16
+from functools import reduce
+
+def evaluate(coefficients, x):
+    # Переводим коэффициенты в целые числа
+    coefficients = list(map(int, coefficients))
+
+    # Вычисляем значение многочлена
+    result = reduce(lambda acc, a: acc * x + a, coefficients, 0)
+
+    return result
+
+# Чтение входных данных
+coefficients = input().strip().split()
+x = int(input().strip())
+
+# Вывод результата
+print(evaluate(coefficients, x))
+
+https://stepik.org/lesson/511854/step/8
+def ignore_command(command):
+    ignore = ['alias', 'configuration', 'ip', 'sql', 'select', 'update', 'exec', 'del', 'truncate']
+    return any(word in command for word in ignore)
+
+
+https://stepik.org/lesson/511854/step/9
+countries = ['Russia', 'USA', 'UK', 'Germany', 'France', 'India']
+capitals = ['Moscow', 'Washington', 'London', 'Berlin', 'Paris', 'Delhi']
+population = [145_934_462, 331_002_651, 80_345_321, 67_886_011, 65_273_511, 1_380_004_385]
+
+for country, capital, pop in zip(countries, capitals, population):
+    print(f"{capital} is the capital of {country}, population equal {pop} people.")
+
+
+https://stepik.org/lesson/511854/step/10
+abscissas = list(map(float, input().split()))
+ordinates = list(map(float, input().split()))
+applicates = list(map(float, input().split()))
+
+R = 2
+
+result = all(x**2 + y**2 + z**2 <= R**2 for x, y, z in zip(abscissas, ordinates, applicates))
+print(result)
+
+
+https://stepik.org/lesson/511854/step/11
+ip_address = input().strip().split('.')
+
+def is_valid_octet(octet):
+    return octet.isdigit() and 0 <= int(octet) <= 255
+
+result = all(is_valid_octet(octet) for octet in ip_address) and len(ip_address) == 4
+print(result)
+
+
+https://stepik.org/lesson/511854/step/12
+a = int(input())
+b = int(input())
+
+def is_valid_number(num):
+    digits = str(num)
+    if '0' in digits:
+        return False
+    return all(num % int(digit) == 0 for digit in digits)
+
+result = [num for num in range(a, b + 1) if is_valid_number(num)]
+print(" ".join(map(str, result)))
+
+
+https://stepik.org/lesson/511854/step/13
+password = input()
+
+is_long_enough = len(password) >= 7
+has_digit = any(char.isdigit() for char in password)
+has_upper = any(char.isupper() for char in password)
+has_lower = any(char.islower() for char in password)
+
+if is_long_enough and has_digit and has_upper and has_lower:
+    print("YES")
+else:
+    print("NO")
+
+
+https://stepik.org/lesson/511854/step/14
+n = int(input())
+grades = [ [int(grade) for _, grade in (input().split() for _ in range(int(input())))] for _ in range(n)]
+result = all(map(lambda x: 5 in x, grades))
+print("YES" if result else "NO")

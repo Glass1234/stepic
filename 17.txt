@@ -1,0 +1,298 @@
+https://stepik.org/lesson/519125/step/11
+file_name = input()
+    #Открываем файл в режиме чтения
+with open(file_name, 'r', encoding='utf-8') as file:
+    # Читаем файл построчно
+    for line in file:
+       # Убираем символ переноса и выводим строку
+       print(line.strip())
+file.close()# Получаем имя файла от пользователя
+
+
+https://stepik.org/lesson/519125/step/12
+# Получаем имя файла от пользователя
+file_name = input()
+
+# Открываем файл в режиме чтения
+file = open(file_name, 'r', encoding='utf-8')
+
+# Читаем все строки файла в список
+lines = file.readlines()
+
+# Выводим предпоследнюю строку
+print(lines[-2].strip())
+
+# Закрываем файл
+file.close()
+
+
+https://stepik.org/lesson/519125/step/13
+import random
+
+# Открываем файл в режиме чтения
+file = open('lines.txt', 'r', encoding='utf-8')
+
+# Читаем все строки файла в список
+lines = file.readlines()
+
+# Выбираем случайную строку
+random_line = random.choice(lines)
+
+# Выводим случайную строку
+print(random_line.strip())
+
+# Закрываем файл
+file.close()
+
+
+https://stepik.org/lesson/519125/step/14
+# Открываем файл в режиме чтения
+file = open('numbers.txt', 'r', encoding='utf-8')
+
+# Читаем строки и преобразуем их в целые числа
+numbers = [int(line.strip()) for line in file.readlines()]
+
+# Вычисляем сумму
+total = sum(numbers)
+
+# Выводим сумму
+print(total)
+
+# Закрываем файл
+file.close()
+
+
+https://stepik.org/lesson/519125/step/15
+# Открываем файл в режиме чтения
+file = open('nums.txt', 'r', encoding='utf-8')
+
+# Читаем содержимое файла и разбиваем на числа
+numbers = []
+for line in file:
+    numbers.extend(line.split())  # Разбиваем строку на элементы
+
+# Преобразуем строки в целые числа
+numbers = [int(num) for num in numbers]
+
+# Вычисляем сумму
+total = sum(numbers)
+
+# Выводим сумму
+print(total)
+
+# Закрываем файл
+file.close()
+
+
+
+https://stepik.org/lesson/519125/step/16
+# Открываем файл в режиме чтения
+file = open('prices.txt', 'r', encoding='utf-8')
+
+# Переменная для хранения общей стоимости
+total_cost = 0
+
+# Читаем строки файла
+for line in file:
+    # Разделяем строку по символу табуляции
+    name, quantity, price = line.strip().split('\t')
+
+    # Преобразуем количество и цену в целые числа
+    quantity = int(quantity)
+    price = int(price)
+
+    # Вычисляем стоимость для текущего товара и добавляем к общей стоимости
+    total_cost += quantity * price
+
+# Выводим общую стоимость
+print(total_cost)
+
+# Закрываем файл
+file.close()
+
+
+https://stepik.org/lesson/530408/step/7
+# Открываем файл в режиме чтения
+with open('text.txt', 'r', encoding='utf-8') as file:
+    # Читаем строку и убираем символы переноса
+    line = file.readline().strip()
+
+# Выводим строку в обратном порядке
+print(line[::-1])
+
+
+https://stepik.org/lesson/530408/step/8
+# Открываем файл в режиме чтения
+with open('data.txt', 'r', encoding='utf-8') as file:
+    # Читаем все строки файла в список
+    lines = file.readlines()
+
+# Выводим строки в обратном порядке
+for line in reversed(lines):
+    print(line, end='')  # Используем end='', чтобы не добавлять дополнительный перенос
+
+
+https://stepik.org/lesson/530408/step/9
+with open('lines.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+
+max_length = max(len(line.strip()) for line in lines)
+for line in lines:
+    if len(line.strip()) == max_length:
+        print(line, end='')
+
+
+https://stepik.org/lesson/530408/step/10
+with open('numbers.txt', 'r', encoding='utf-8') as file:
+    for line in file:
+        numbers = map(int, line.split())
+        total = sum(numbers)
+        print(total)
+
+
+https://stepik.org/lesson/530408/step/11
+import re
+
+with open('nums.txt', 'r', encoding='utf-8') as file:
+    content = file.read()
+
+numbers = map(int, re.findall(r'\d+', content))
+total_sum = sum(numbers)
+print(total_sum)
+
+
+https://stepik.org/lesson/530408/step/12
+with open('file.txt', 'r', encoding='utf-8') as file:
+    content = file.readlines()
+
+letters_count = sum(c.isalpha() for line in content for c in line)
+words_count = sum(len(line.split()) for line in content)
+lines_count = len(content)
+
+print("Input file contains:")
+print(f"{letters_count} letters")
+print(f"{words_count} words")
+print(f"{lines_count} lines")
+
+
+https://stepik.org/lesson/530408/step/13
+import random
+
+with open('first_names.txt', 'r', encoding='utf-8') as f1, open('last_names.txt', 'r', encoding='utf-8') as f2:
+    first_names = f1.read().splitlines()
+    last_names = f2.read().splitlines()
+
+random_pairs = random.sample([(fn, ln) for fn in first_names for ln in last_names], 3)
+
+for fn, ln in random_pairs:
+    print(fn, ln)
+
+
+https://stepik.org/lesson/530408/step/14
+with open('population.txt', 'r', encoding='utf-8') as file:
+    for line in file:
+        country, population = line.strip().split('\t')
+        if country.startswith('G') and int(population) > 500000:
+            print(country)
+
+
+https://stepik.org/lesson/530408/step/15
+import csv
+
+def read_csv():
+    with open('data.csv', 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        return [row for row in reader]
+
+
+https://stepik.org/lesson/519126/step/8
+# Считываем строку текста от пользователя
+text = input()
+
+# Записываем строку в файл output.txt
+with open('output.txt', 'w', encoding='utf-8') as file:
+    file.write(text)
+
+
+https://stepik.org/lesson/519126/step/9
+import random
+
+# Открываем файл random.txt в режиме записи
+with open('random.txt', 'w', encoding='utf-8') as file:
+    # Генерируем 25 случайных чисел в диапазоне от 111 до 777
+    for _ in range(25):
+        number = random.randint(111, 777)
+        file.write(f"{number}\n")
+
+
+https://stepik.org/lesson/519126/step/10
+with open('input.txt', 'r', encoding='utf-8') as infile, open('output.txt', 'w', encoding='utf-8') as outfile:
+    for index, line in enumerate(infile, start=1):
+        outfile.write(f"{index}) {line}")
+
+
+https://stepik.org/lesson/519126/step/11
+with open('class_scores.txt', 'r', encoding='utf-8') as infile, open('new_scores.txt', 'w', encoding='utf-8') as outfile:
+    for line in infile:
+        name, score = line.split()
+        new_score = min(int(score) + 5, 100)  # Добавляем 5 баллов, но не превышаем 100
+        outfile.write(f"{name} {new_score}\n")
+
+
+https://stepik.org/lesson/519126/step/12
+with open('goats.txt', 'r') as file:
+    lines = file.readlines()
+
+colours_start = lines.index('COLOURS\n') + 1
+goats_start = lines.index('GOATS\n') + 1
+
+colours = [line.strip() for line in lines[colours_start:goats_start - 1]]
+goats = [line.strip() for line in lines[goats_start:]]
+
+total_goats = len(goats)
+threshold = total_goats * 0.07
+
+count = {colour: 0 for colour in colours}
+
+for goat in goats:
+    if goat in count:
+        count[goat] += 1
+
+result = [colour for colour, cnt in count.items() if cnt > threshold]
+result.sort()
+
+with open('answer.txt', 'w') as output_file:
+    output_file.write('\n'.join(result) + '\n')
+
+
+
+https://stepik.org/lesson/519126/step/13
+n = int(input())
+filenames = [input().strip() for _ in range(n)]
+
+with open('output.txt', 'w') as output_file:
+    for filename in filenames:
+        with open(filename, 'r') as input_file:
+            content = input_file.read()
+            output_file.write(content)
+
+
+https://stepik.org/lesson/519126/step/14
+with open('logfile.txt', 'r') as file:
+    lines = file.readlines()
+
+users = []
+
+for line in lines:
+    username, login_time, logout_time = line.strip().split(', ')
+    login_hour, login_minute = map(int, login_time.split(':'))
+    logout_hour, logout_minute = map(int, logout_time.split(':'))
+
+    login_total_minutes = login_hour * 60 + login_minute
+    logout_total_minutes = logout_hour * 60 + logout_minute
+
+    if logout_total_minutes - login_total_minutes >= 60:
+        users.append(username)
+
+with open('output.txt', 'w') as output_file:
+    output_file.write('\n'.join(users) + '\n')

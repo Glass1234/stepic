@@ -1,0 +1,103 @@
+https://stepik.org/lesson/513589/step/15
+def generate_letter(mail, name, date, time, place, teacher='Тимур Гуев', number=17):
+    return (f"To: {mail}\n"
+            f"Приветствую, {name}!\n"
+            f"Вам назначен экзамен, который пройдет {date}, в {time}.\n"
+            f"По адресу: {place}. \n"
+            f"Экзамен будет проводить {teacher} в кабинете {number}. \n"
+            f"Желаем удачи на экзамене!")
+
+
+https://stepik.org/lesson/513589/step/16
+def pretty_print(data, side='-', delimiter='|'):
+    word = delimiter + ' '
+
+    for item in data:
+        word += str(item) + ' ' + delimiter + ' '
+
+    word = word.rstrip()  # Удаляем последний пробел
+    length = len(word)    # Общая длина слова
+    border = ' ' + side * (length - 2) + ' '  # Делаем рамку с учетом пробелов
+
+    print(border)
+    print(word)
+    print(border)
+
+
+https://stepik.org/lesson/507310/step/1
+def concat(*args, sep=' '):
+    return sep.join(str(arg) for arg in args)
+
+
+https://stepik.org/lesson/507310/step/2
+from functools import reduce
+
+def product_of_odds(data):
+    odds = filter(lambda x: x % 2 == 1, data)
+    return reduce(lambda x, y: x * y, odds, 1)
+
+
+https://stepik.org/lesson/507310/step/3
+words = 'the world is mine take a look what you have started'.split()
+print(*map(lambda x: f'"{x}"', words))
+
+
+https://stepik.org/lesson/507310/step/4
+numbers = [18, 191, 9009, 5665, 78, 77, 45, 23, 19991, 908, 8976, 6565, 5665, 10, 1000, 908, 909, 232, 45654, 786]
+print(*filter(lambda x: str(x) != str(x)[::-1], numbers))
+
+
+https://stepik.org/lesson/507310/step/5
+numbers = [(10, -2, 3, 4), (-13, 56), (1, 9, 2), (-1, -9, -45, 32), (-1, 5, 1), (17, 0, 1), (0, 1), (3,), (39, 12), (11, -23), (10, -100, 21, 32), (3, -8), (1, 1)]
+
+sorted_numbers = sorted(numbers, key=lambda x: sum(x) / len(x), reverse=True)
+
+print(sorted_numbers)
+
+
+https://stepik.org/lesson/507310/step/6
+def call(func, *args):
+    return func(*args)
+
+
+https://stepik.org/lesson/507310/step/7
+def compose(f, g):
+    return lambda x: f(g(x))
+
+
+https://stepik.org/lesson/507310/step/8
+def arithmetic_operation(op):
+    if op == '+':
+        return lambda x, y: x + y
+    elif op == '-':
+        return lambda x, y: x - y
+    elif op == '*':
+        return lambda x, y: x * y
+    elif op == '/':
+        return lambda x, y: x / y
+
+
+https://stepik.org/lesson/507310/step/9
+print(' '.join(sorted(input().split(), key=str.lower)))
+
+
+https://stepik.org/lesson/507310/step/10
+n = int(input())
+words = [input().strip() for _ in range(n)]
+
+def gematria(word):
+    return sum(ord(char.upper()) - ord('A') for char in word)
+
+sorted_words = sorted(words, key=lambda word: (gematria(word), word))
+print(*sorted_words, sep='\n')
+
+
+https://stepik.org/lesson/507310/step/11
+n = int(input())
+ips = [input().strip() for _ in range(n)]
+
+def ip_to_decimal(ip):
+    return sum(int(octet) * (256 ** (3 - i)) for i, octet in enumerate(ip.split('.')))
+
+sorted_ips = sorted(ips, key=ip_to_decimal)
+print(*sorted_ips, sep='\n')

@@ -1,0 +1,169 @@
+https://stepik.org/lesson/491382/step/14
+my_dict = {'C1': [10, 20, 30, 7, 6, 23, 90], 'C2': [20, 30, 40, 1, 2, 3, 90, 12], 'C3': [12, 34, 20, 21], 'C4': [22, 54, 209, 21, 7], 'C5': [2, 4, 29, 21, 19], 'C6': [4, 6, 7, 10, 55], 'C7': [4, 8, 12, 23, 42], 'C8': [3, 14, 15, 26, 48], 'C9': [2, 7, 18, 28, 18, 28]}
+
+for key in my_dict:
+    my_dict[key] = [x for x in my_dict[key] if x <= 20]
+
+
+https://stepik.org/lesson/491382/step/15
+emails = {'nosu.edu': ['timyr', 'joseph', 'svetlana.gaeva', 'larisa.mamuk'],
+          'gmail.com': ['ruslan.chaika', 'rustam.mini', 'stepik-best'],
+          'msu.edu': ['apple.fruit', 'beegeek', 'beegeek.school'],
+          'yandex.ru': ['surface', 'google'],
+          'hse.edu': ['tomas-henders', 'cream.soda', 'zivert'],
+          'mail.ru': ['angel.down', 'joanne', 'the.fame.moster']}
+addresses = []
+for domain, usernames in emails.items():
+    for username in usernames:
+        addresses.append(f"{username}@{domain}")
+
+for address in sorted(addresses):
+    print(address)
+
+
+
+
+https://stepik.org/lesson/492141/step/1
+# Ввод цепи ДНК
+dna_sequence = input().strip()
+
+# Словарь для комплементарных нуклеотидов
+transcription_dict = {
+    'G': 'C',
+    'C': 'G',
+    'T': 'A',
+    'A': 'U'
+}
+
+# Переводим ДНК в РНК
+rna_sequence = ''.join(transcription_dict[nucleotide] for nucleotide in dna_sequence)
+
+# Выводим цепь РНК
+print(rna_sequence)
+
+
+https://stepik.org/lesson/492141/step/2
+# Ввод строки текста
+text = input().strip()
+
+# Разделение текста на слова
+words = text.split()
+
+# Словарь для хранения количества вхождений слов
+word_count = {}
+
+# Список для хранения порядковых номеров вхождений
+result = []
+
+# Подсчет порядковых номеров вхождений
+for word in words:
+    if word not in word_count:
+        word_count[word] = 0
+    word_count[word] += 1
+    result.append(word_count[word])
+
+# Вывод результата
+print(' '.join(map(str, result)))
+
+
+https://stepik.org/lesson/492141/step/3
+# Ввод слова
+word = input().strip()
+
+# Определение стоимости букв
+letter_values = {
+    'A': 1, 'E': 1, 'I': 1, 'L': 1, 'N': 1, 'O': 1, 'R': 1, 'S': 1, 'T': 1, 'U': 1,
+    'D': 2, 'G': 2,
+    'B': 3, 'C': 3, 'M': 3, 'P': 3,
+    'F': 4, 'H': 4, 'V': 4, 'W': 4, 'Y': 4,
+    'K': 5,
+    'J': 8, 'X': 8,
+    'Q': 10, 'Z': 10
+}
+
+# Подсчет стоимости слова
+total_score = sum(letter_values[letter] for letter in word)
+
+# Вывод результата
+print(total_score)
+
+
+https://stepik.org/lesson/492141/step/4
+def build_query_string(params):
+    # Сортируем параметры по ключам
+    sorted_params = sorted(params.items())
+    # Формируем строку запроса
+    query_string = '&'.join(f"{key}={value}" for key, value in sorted_params)
+    return query_string
+
+
+https://stepik.org/lesson/492141/step/5
+def merge(dicts):
+    merged_dict = {}
+
+    for d in dicts:
+        for key, value in d.items():
+            if key not in merged_dict:
+                merged_dict[key] = set()
+            merged_dict[key].add(value)
+
+    return merged_dict
+
+
+https://stepik.org/lesson/492141/step/6
+# Ввод количества файлов
+n = int(input().strip())
+
+# Словарь для хранения файлов и их разрешений
+file_permissions = {}
+
+# Чтение файлов и разрешений
+for _ in range(n):
+    line = input().strip().split()
+    filename = line[0]
+    permissions = line[1:]  # разрешения
+    file_permissions[filename] = set(permissions)
+
+# Ввод количества запросов
+m = int(input().strip())
+
+# Обработка запросов
+for _ in range(m):
+    query = input().strip().split()
+    operation, filename = query[0], query[1]
+
+    # Определение допустимых операций
+    operation_map = {
+        'write': 'W',
+        'read': 'R',
+        'execute': 'X'
+    }
+
+    if filename in file_permissions and operation_map[operation] in file_permissions[filename]:
+        print("OK")
+    else:
+        print("Access denied")
+
+
+https://stepik.org/lesson/492141/step/7
+from collections import defaultdict
+
+# Ввод количества записей
+n = int(input().strip())
+
+# Словарь для хранения данных о покупателях и их товарах
+sales_data = defaultdict(lambda: defaultdict(int))
+
+# Чтение записей о продажах
+for _ in range(n):
+    line = input().strip().split()
+    buyer = line[0]
+    product = line[1]
+    quantity = int(line[2])
+    sales_data[buyer][product] += quantity
+
+# Сортировка покупателей и товаров
+for buyer in sorted(sales_data.keys()):
+    print(f"{buyer}:")
+    for product in sorted(sales_data[buyer].keys()):
+        print(f"{product} {sales_data[buyer][product]}")

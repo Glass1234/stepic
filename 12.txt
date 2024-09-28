@@ -1,0 +1,242 @@
+https://stepik.org/lesson/356379/step/11
+import random
+
+n = int(input("Введите количество попыток: "))
+for _ in range(n):
+    result = random.choice(["Орел", "Решка"])
+    print(result)
+
+
+https://stepik.org/lesson/356379/step/12
+import random
+
+n = int(input())
+for _ in range(n):
+    result = random.randint(1, 6)
+    print(result)
+
+
+https://stepik.org/lesson/356379/step/13
+import random
+
+length = int(input())
+password = ''
+
+for _ in range(length):
+    if random.choice([True, False]):
+        password += chr(random.randint(65, 90))  # Верхний регистр
+    else:
+        password += chr(random.randint(97, 122))  # Нижний регистр
+
+print(password)
+
+
+https://stepik.org/lesson/356379/step/14
+import random
+
+lottery_numbers = random.sample(range(1, 50), 7)
+lottery_numbers.sort()
+print(" ".join(map(str, lottery_numbers)))
+
+
+
+
+
+
+https://stepik.org/lesson/356380/step/6
+import random
+
+def generate_ip():
+    return f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+
+
+https://stepik.org/lesson/356380/step/7
+import random
+import string
+
+def generate_index():
+    letters = ''.join(random.choices(string.ascii_uppercase, k=2))
+    number1 = random.randint(0, 99)
+    number2 = random.randint(0, 99)
+    letters2 = ''.join(random.choices(string.ascii_uppercase, k=2))
+    return f"{letters}{number1:02}_{number2:02}{letters2}"
+
+
+https://stepik.org/lesson/356380/step/8
+import random
+
+matrix = [[1, 2, 3, 4],
+          [5, 6, 7, 8],
+          [9, 10, 11, 12],
+          [13, 14, 15, 16]]
+
+# Перемешиваем порядок вложенных списков
+random.shuffle(matrix)
+
+
+https://stepik.org/lesson/356380/step/9
+import random
+
+lottery_numbers = set()
+
+while len(lottery_numbers) < 100:
+    number = str(random.randint(1, 9)) + ''.join(random.choices('0123456789', k=6))
+    lottery_numbers.add(number)
+
+for ticket in lottery_numbers:
+    print(ticket)
+
+
+https://stepik.org/lesson/356380/step/10
+import random
+
+word = input().strip()
+letters = list(word)  # Преобразуем слово в список букв
+random.shuffle(letters)  # Перемешиваем буквы
+anagram = ''.join(letters)  # Преобразуем обратно в строку
+
+print(anagram)
+
+
+https://stepik.org/lesson/356380/step/11
+import random
+
+# Генерируем уникальные числа от 1 до 75
+numbers = random.sample(range(1, 76), 24)  # 24 уникальных числа
+bingo_card = []
+
+# Формируем 5x5 карточку
+for i in range(5):
+    row = []
+    for j in range(5):
+        if i == 2 and j == 2:  # Центральная клетка
+            row.append(0)
+        else:
+            row.append(numbers.pop(0))  # Берем числа из списка
+    bingo_card.append(row)
+
+# Вывод карточки
+for row in bingo_card:
+    print(' '.join(str(num).ljust(3) for num in row))
+
+
+https://stepik.org/lesson/356380/step/12
+import random
+
+# Читаем количество учеников
+n = int(input())
+students = [input().strip() for _ in range(n)]
+
+# Создаем список для тайных друзей
+friends = students.copy()
+
+# Перемешиваем список тайных друзей
+random.shuffle(friends)
+
+# Обеспечиваем, чтобы никто не был другом самого себя
+for i in range(n):
+    if students[i] == friends[i]:
+        # Находим индекс следующего друга
+        friends[i], friends[(i + 1) % n] = friends[(i + 1) % n], friends[i]
+
+# Выводим результаты
+for i in range(n):
+    print(f"{students[i]} - {friends[i]}")
+
+
+https://stepik.org/lesson/356380/step/13
+import random
+import string
+
+def generate_password(length):
+    # Определяем доступные символы
+    characters = string.ascii_letters.replace('l', '').replace('I', '').replace('o', '').replace('O', '') + string.digits.replace('1', '').replace('0', '')
+    # Генерируем пароль
+    return ''.join(random.choice(characters) for _ in range(length))
+
+def generate_passwords(count, length):
+    # Генерируем список паролей
+    return [generate_password(length) for _ in range(count)]
+
+# Читаем входные данные
+n = int(input())
+m = int(input())
+
+# Генерируем и выводим пароли
+passwords = generate_passwords(n, m)
+for password in passwords:
+    print(password)
+
+
+https://stepik.org/lesson/356380/step/14
+import random
+import string
+
+def generate_password(length):
+    # Определяем символы для пароля, исключая путаные символы
+    lower = string.ascii_lowercase.replace('l', '').replace('o', '')
+    upper = string.ascii_uppercase.replace('I', '').replace('O', '')
+    digits = string.digits.replace('1', '').replace('0', '')
+
+    # Убедимся, что в пароле есть по одному символу каждого типа
+    password = [
+        random.choice(lower),
+        random.choice(upper),
+        random.choice(digits)
+    ]
+
+    # Добавим случайные символы, чтобы заполнить оставшуюся длину пароля
+    all_characters = lower + upper + digits
+    password += random.choices(all_characters, k=length - 3)
+
+    # Перемешиваем пароль, чтобы обеспечить случайный порядок
+    random.shuffle(password)
+
+    return ''.join(password)
+
+def generate_passwords(count, length):
+    return [generate_password(length) for _ in range(count)]
+
+# Читаем входные данные
+n = int(input())
+m = int(input())
+
+# Убедимся, что длина пароля не меньше 3
+if m < 3:
+    raise ValueError("Длина пароля должна быть не менее 3 символов.")
+
+# Генерируем и выводим пароли
+passwords = generate_passwords(n, m)
+for password in passwords:
+    print(password)
+
+https://stepik.org/lesson/499669/step/6
+import random
+
+n = 1000000
+k = 0
+s0 = 16
+for _ in range(n):
+    x = random.uniform(-2, 2)
+    y = random.uniform(-2, 2)
+
+    if x**3 + y**4 + 2 >= 0 and 3*x + y**2 <= 2:
+        k += 1
+
+print((k/n)*s0)
+
+
+https://stepik.org/lesson/499669/step/8
+import random
+
+n = 1000000
+k = 0
+s0 = 4
+for _ in range(n):
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+
+    if x**2 + y**2 <= 1:
+        k += 1
+
+print((k/n)*s0)

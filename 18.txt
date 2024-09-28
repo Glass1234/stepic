@@ -1,0 +1,121 @@
+https://stepik.org/lesson/448983/step/1
+filename = input().strip()
+
+with open(filename, 'r') as file:
+    line_count = sum(1 for line in file)
+
+print(line_count)
+
+
+https://stepik.org/lesson/448983/step/2
+with open('ledger.txt', 'r') as file:
+    total_revenue = sum(int(line.strip().replace('$', '')) for line in file)
+
+print(f"${total_revenue}")
+
+
+https://stepik.org/lesson/448983/step/3
+with open('grades.txt', 'r') as file:
+    passed_students = 0
+
+    for line in file:
+        parts = line.strip().split()
+        scores = list(map(int, parts[1:]))
+
+        if all(score >= 65 for score in scores):
+            passed_students += 1
+
+print(passed_students)
+
+
+https://stepik.org/lesson/448983/step/4
+with open('words.txt', 'r') as file:
+    words = file.read().split()
+
+max_length = max(len(word) for word in words)
+longest_words = [word for word in words if len(word) == max_length]
+
+print('\n'.join(longest_words))
+
+
+https://stepik.org/lesson/448983/step/5
+filename = input().strip()
+
+with open(filename, 'r') as file:
+    lines = []
+    for line in file:
+        lines.append(line)
+        if len(lines) > 10:
+            lines.pop(0)
+
+print(''.join(lines))
+
+
+https://stepik.org/lesson/448983/step/6
+# Чтение запрещенных слов из файла
+with open('forbidden_words.txt', 'r') as f:
+    forbidden_words = f.read().strip().split()
+
+# Получение имени файла, в котором нужно заменить слова
+filename = input().strip()
+
+# Чтение содержимого целевого файла
+with open(filename, 'r') as file:
+    s = file.read()
+
+s_lower = s.lower()
+
+# Замена запрещенных слов на звездочки в нижнем регистре
+for w in forbidden_words:
+    s_lower = s_lower.replace(w.lower(), '*' * len(w))
+
+# Формирование и вывод результата
+result = ''.join(c if c == '*' else s[i] for i, c in enumerate(s_lower))
+print(result)
+
+
+https://stepik.org/lesson/448983/step/7
+# Транслитерационная таблица
+translit_table = {
+    'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd', 'е': 'e', 'ё': 'jo',
+    'ж': 'zh', 'з': 'z', 'и': 'i', 'й': 'j', 'к': 'k', 'л': 'l', 'м': 'm',
+    'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r', 'с': 's', 'т': 't', 'у': 'u',
+    'ф': 'f', 'х': 'h', 'ц': 'c', 'ч': 'ch', 'ш': 'sh', 'щ': 'shh',
+    'ъ': '*', 'ы': 'y', 'ь': "'", 'э': 'je', 'ю': 'ju', 'я': 'ya',
+    'А': 'A', 'Б': 'B', 'В': 'V', 'Г': 'G', 'Д': 'D', 'Е': 'E', 'Ё': 'Jo',
+    'Ж': 'Zh', 'З': 'Z', 'И': 'I', 'Й': 'J', 'К': 'K', 'Л': 'L', 'М': 'M',
+    'Н': 'N', 'О': 'O', 'П': 'P', 'Р': 'R', 'С': 'S', 'Т': 'T', 'У': 'U',
+    'Ф': 'F', 'Х': 'H', 'Ц': 'C', 'Ч': 'Ch', 'Ш': 'Sh', 'Щ': 'Shh',
+    'Ъ': '*', 'Ы': 'Y', 'Ь': "'", 'Э': 'Je', 'Ю': 'Ju', 'Я': 'Ya'
+}
+
+# Чтение содержимого файла cyrillic.txt
+with open('cyrillic.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+
+# Транслитерация текста
+transliterated_text = ''.join(translit_table.get(char, char) for char in text)
+
+# Запись результата в файл transliteration.txt
+with open('transliteration.txt', 'w', encoding='utf-8') as output_file:
+    output_file.write(transliterated_text)
+
+
+https://stepik.org/lesson/448983/step/8
+filename = input().strip()
+
+with open(filename, 'r') as file:
+    lines = file.readlines()
+
+functions_without_comments = []
+for i in range(len(lines)):
+    line = lines[i].strip()
+    if line.startswith('def '):
+        function_name = line.split('(')[0][4:]  # Извлечение имени функции
+        if i == 0 or not lines[i - 1].strip().startswith('#'):
+            functions_without_comments.append(function_name)
+
+if functions_without_comments:
+    print('\n'.join(functions_without_comments))
+else:
+    print("Best Programming Team")

@@ -1,0 +1,203 @@
+https://stepik.org/lesson/360941/step/10
+from decimal import *
+
+s = '0.77 4.03 9.06 3.80 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 6.67 1.46 5.26 4.83 7.23 1.22 1.02 7.82 9.97 5.40 9.79 9.82 2.78 2.96 0.07 1.72 7.24 7.84 9.23 1.71 6.24 5.78 5.37 0.03 9.60 8.86 2.73 5.83 6.50'
+
+# Преобразование строки в список Decimal
+numbers = [Decimal(num) for num in s.split()]
+
+# Нахождение наименьшего и наибольшего числа
+min_num = min(numbers)
+max_num = max(numbers)
+
+# Вывод суммы наименьшего и наибольшего числа
+print(min_num + max_num)
+
+
+https://stepik.org/lesson/360941/step/11
+from decimal import *
+
+s = '9.73 8.84 8.92 9.60 9.32 8.97 8.53 1.26 6.62 9.85 1.85 1.80 0.83 6.75 9.74 9.11 9.14 5.03 5.03 1.34 3.52 8.09 7.89 8.24 8.23 5.22 0.30 2.59 1.25 6.24 2.14 7.54 5.72 2.75 2.32 2.69 9.32 8.11 4.53 0.80 0.08 9.36 5.22 4.08 3.86 5.56 1.43 8.36 6.29 5.13'
+
+# Преобразование строки в список Decimal
+numbers = [Decimal(num) for num in s.split()]
+
+# Сумма всех чисел
+total_sum = sum(numbers)
+
+# Нахождение 5 самых больших чисел
+top_5 = sorted(numbers, reverse=True)[:5]
+
+# Вывод результата
+print(total_sum)
+print(' '.join(map(str, top_5)))
+
+
+https://stepik.org/lesson/360941/step/12
+from decimal import *
+
+num = Decimal(input())
+
+# Преобразование Decimal числа в строку и извлечение цифр
+digits = [int(d) for d in str(num) if d.isdigit()]
+
+# Нахождение наибольшей и наименьшей цифры
+max_digit = max(digits)
+min_digit = min(digits)
+
+# Вывод суммы наибольшей и наименьшей цифры
+print(max_digit + min_digit)
+
+
+https://stepik.org/lesson/360941/step/13
+from decimal import *
+
+# Установка высокой точности
+getcontext().prec = 30
+
+# Ввод Decimal числа
+d = Decimal(input())
+
+# Вычисление выражения
+e_d = d.exp()  # значение e с высокой точностью
+ln_d = d.ln()  # натуральный логарифм
+lg_d = d.log10()  # логарифм по основанию 10
+sqrt_d = d.sqrt()  # квадратный корень
+
+# Суммирование всех частей
+result = e_d + ln_d + lg_d + sqrt_d
+
+# Вывод результата
+print(result)
+
+https://stepik.org/lesson/362369/step/6
+from fractions import Fraction
+
+numbers = ['6.34', '4.08', '3.04', '7.49', '4.45', '5.39', '7.82', '2.76', '0.71', '1.97', '2.54', '3.67', '0.14', '4.29', '1.84', '4.07', '7.26', '9.37', '8.11', '4.30', '7.16', '2.46', '1.27', '0.29', '5.12', '4.02', '6.95', '1.62', '2.26', '0.45', '6.91', '7.39', '0.52', '1.88', '8.38', '0.75', '0.32', '4.81', '3.31', '4.63', '7.84', '2.25', '1.10', '3.35', '2.05', '7.87', '2.40', '1.20', '2.58', '2.46']
+
+for num in numbers:
+    frac = Fraction(float(num)).limit_denominator()
+    print(f'{num} = {frac}')
+
+
+https://stepik.org/lesson/362369/step/7
+from fractions import Fraction
+
+s = '0.78 4.3 9.6 3.88 7.08 5.88 0.23 4.65 2.79 0.90 4.23 2.15 3.24 8.57 0.10 8.57 1.49 5.64 3.63 8.36 1.56 6.67 1.46 5.26 4.83 7.13 1.22 1.02 7.82 9.97 5.40 9.79 9.82 2.78 2.96 0.07 1.72 7.24 7.84 9.23 1.71 6.24 5.78 5.37 0.03 9.60 8.86 2.73 5.83 6.50 0.123 0.00021'
+
+numbers = list(map(Fraction, s.split()))
+result = min(numbers) + max(numbers)
+print(result)
+
+
+https://stepik.org/lesson/362369/step/8
+from fractions import Fraction
+
+m = int(input())
+n = int(input())
+
+result = Fraction(m, n)
+print(result)
+
+
+https://stepik.org/lesson/362369/step/9
+from fractions import Fraction
+
+frac1_input = input()
+frac2_input = input()
+
+frac1 = Fraction(frac1_input)
+frac2 = Fraction(frac2_input)
+
+print(f'{frac1_input} + {frac2_input} = {frac1 + frac2}')
+print(f'{frac1_input} - {frac2_input} = {frac1 - frac2}')
+print(f'{frac1_input} * {frac2_input} = {frac1 * frac2}')
+print(f'{frac1_input} / {frac2_input} = {frac1 / frac2}')
+
+
+https://stepik.org/lesson/362369/step/10
+from fractions import Fraction
+
+n = int(input())
+result = sum(Fraction(1, i**2) for i in range(1, n + 1))
+print(result)
+
+
+https://stepik.org/lesson/362369/step/11
+from fractions import Fraction
+from math import factorial
+
+n = int(input())
+result = sum(Fraction(1, factorial(i)) for i in range(1, n + 1))
+print(result)
+
+
+https://stepik.org/lesson/362369/step/12
+from math import gcd
+
+n = int(input())
+max_fraction = (0, 1)  # (numerator, denominator)
+
+for numerator in range(n // 2, 0, -1):
+    denominator = n - numerator
+    if numerator < denominator and gcd(numerator, denominator) == 1:
+        max_fraction = (numerator, denominator)
+        break
+
+print(f'{max_fraction[0]}/{max_fraction[1]}')
+
+
+https://stepik.org/lesson/362369/step/13
+from math import gcd
+
+n = int(input())
+fractions = []
+
+for denominator in range(2, n + 1):
+    for numerator in range(1, denominator):
+        if gcd(numerator, denominator) == 1:
+            fractions.append((numerator, denominator))
+
+fractions.sort(key=lambda x: x[0] / x[1])
+
+for num, den in fractions:
+    print(f'{num}/{den}')
+
+
+
+
+
+
+https://stepik.org/lesson/360942/step/12
+# Чтение двух комплексных чисел
+complex1 = complex(input())
+complex2 = complex(input())
+
+# Вычисление суммы, разности и произведения
+sum_result = complex1 + complex2
+difference_result = complex1 - complex2
+product_result = complex1 * complex2
+
+# Форматированный вывод результатов
+print(f'{complex1} + {complex2} = {sum_result}')
+print(f'{complex1} - {complex2} = {difference_result}')
+print(f'{complex1} * {complex2} = {product_result}')
+
+
+https://stepik.org/lesson/360942/step/13
+numbers = [3 + 4j, 3 + 1j, -7 + 3j, 4 + 8j, -8 + 10j, -3 + 2j, 3 - 2j, -9 + 9j, -1 - 1j, -1 - 10j, -20 + 15j, -21 + 1j, 1j, -3 + 8j, 4 - 6j, 8 + 2j, 2 + 3j]
+
+max_complex = max(numbers, key=abs)
+max_modulus = abs(max_complex)
+
+print(max_complex)
+print(max_modulus)
+
+
+https://stepik.org/lesson/360942/step/14
+n = int(input())
+z1 = complex(input())
+z2 = complex(input())
+
+result = (z1 ** n) + (z2 ** n) + (z1.conjugate() ** n) + (z2.conjugate() ** (n+1))
+print(result)
