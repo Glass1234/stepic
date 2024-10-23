@@ -163,11 +163,6 @@ fractions.sort(key=lambda x: x[0] / x[1])
 for num, den in fractions:
     print(f'{num}/{den}')
 
-
-
-
-
-
 https://stepik.org/lesson/360942/step/12
 # Чтение двух комплексных чисел
 complex1 = complex(input())
